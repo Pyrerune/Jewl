@@ -3,8 +3,7 @@ CXXFLAGS=-o jewl
 all:
 	${CXX} ${FILES} ${CXXFLAGS}
 
-install: 
+install:
 	mv jewl ~/sys/bin
-	
-
-
+test:
+	./jewl tests/main.d
