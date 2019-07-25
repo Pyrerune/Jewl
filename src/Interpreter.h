@@ -5,4 +5,3 @@ class Interpreter {
     int run(char token[], int size);
 };
 #endif
-
