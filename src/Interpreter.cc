@@ -1,5 +1,6 @@
 #include "Interpreter.h"
 #include <iostream>
+#include <bits/stdc++.h>
 
 char replaceChar(char ch1, char ch2) {
 	  ch1 = ch2;
@@ -35,8 +36,14 @@ int Interpreter::run(char token[], int size) {
 	size = size - 1;
 	bool lined = false;
 	bool print = false;
+	bool var = false;
+	bool string = false;
+	bool integer = false;
 	int digit_first = 0;
 	int digit_second = 0;
+	std::vector <std::string> varFull;
+	std::string strVar = "";
+	int intVar = 0;
 	char expr = ' ';
 	for (int i = 0; i <= size; i++) {
 		char tok = token[i];
@@ -58,11 +65,41 @@ int Interpreter::run(char token[], int size) {
 		//setup for printing
 		if(token[i] == 'p' && token[i+1] == 'r' && token[i+2] == 'i' && token[i+3] == 'n' && token[i+4] == 't' && token[i+5] == 'l' && token[i+6] == 'n') {
 			lined = true;
+			var = false;
 			print = true;
 		} else if(token[i] == 'p' && token[i+1] == 'r' && token[i+2] == 'i' && token[i+3] == 'n' && token[i+4] == 't' && token[i+5] != 'l') {
 			lined = false;
+			var = false;
 			print = true;
+		} else if(token[i] == 'S' && token[i+1] == 't' && token[i+2] == 'r') {
+			lined = false;
+			print = false;
+			var = true;
+			string = true;
+			std::string var;
+			std::string varContent;
+			for(int x = 1; token[i+3+x] != '='; x++) {
+
+				std::string chstr(1, token[i+3+x]);
+				char* ch = const_cast<char*>(chstr.c_str());
+				var.append(ch);
+			}
+			//std::cout << var.length();
+			if(token[i+3+var.length()+1] == '=' && token[i+3+var.length()+2] == '"') {
+				for(int x = 2; token[i+3+var.length()+x] != ';'; x++) {
+					int y = 3+var.length();
+					if(token[i+y+x] == '~' || token[i+y+x] == '"') {
+
+					} else {
+						std::string chstr(1, token[i+y+x]);
+						char* ch = const_cast<char*>(chstr.c_str());
+						varContent.append(ch);
+					}
+				}
+			}
+			varFull.push_back(var + ":" + varContent);
 		}
+
 		//format and print strings
 		if(token[i] == '"') {
 			std::string word;
@@ -81,6 +118,8 @@ int Interpreter::run(char token[], int size) {
 				} else if(lined == true) {
 					std::cout << word << std::endl;
 				}
+			} else if(var == true && string == true) {
+				strVar == word;
 			}
 		} else if(token[i] == '1' || token[i] == '2' || token[i] == '3' || token[i] == '4' || token[i] == '5' || token[i] == '6' || token[i] == '7' || token[i] == '8' || token[i] == '9' || token[i] == '0') {
 			if(token[i+1] == '1' || token[i+1] == '2' || token[i+1] == '3' || token[i+1] == '4' || token[i+1] == '5' || token[i+1] == '6' || token[i+1] == '7' || token[i+1] == '8' || token[i+1] == '9' || token[i+1] == '0') {
@@ -241,8 +280,11 @@ int Interpreter::run(char token[], int size) {
 			}
 
 		}
-
-
+		else if(token[i] == '$') {
+			for(int x = 0; x < varFull.size(); x++) {
+				std::cout << varFull[x];
+			}
+		}
 		if(token[i+1] == ';') {
 			continue;
 		}
