@@ -1,0 +1,13 @@
+println "===";
+println 10/20;
+println "===";
+println 10/2;
+println "===";
+println 10;
+println "===";
+println 1/2;
+println "===";
+println 1/20;
+println "===";
+println 1;
+println "===";
