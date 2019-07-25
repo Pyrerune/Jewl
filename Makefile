@@ -1,4 +1,4 @@
-FILES=main.cc Interpreter.cc
+FILES=src/main.cc src/Interpreter.cc
 CXXFLAGS=-o jewl
 all:
 	${CXX} ${FILES} ${CXXFLAGS}
