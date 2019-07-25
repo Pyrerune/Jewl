@@ -19,12 +19,24 @@ int main(int argc, char *argv[]) {
   std::string file = argv[1];
   std::string line;
   std::ifstream t(file);
+
+  //std::cout << count;
   std::string contents { std::istreambuf_iterator<char>(t), std::istreambuf_iterator<char>() };
   contents.append("<EOF>");
   char arr[contents.length() + 1];
   strcpy(arr, contents.c_str());
 
   int end = interpreter.run(arr, contents.length());
+  switch(end) {
+    case 1:
+      std::cout << std::endl << "GENERAL ERROR" << std::endl;
+      break;
+    case 2:
+      std::cout << std::endl << "DuplicateVarNameError" << std::endl;
+      break;
+    case 3:
+      std::cout << std::endl << "UnTerminatedPrintFunction" << std::endl;
 
-  return end;
+  }
+  return 0;
 }
