@@ -1,0 +1,14 @@
+Jewl Changelog
+Version 0.1
+  -Added print and println
+Version 0.2
+  -Added Support for Integer Adding
+Version 0.3
+  -Added Other Arithmetic Operators
+  -Division does not work
+Version 1.0
+  -Rewrote the Interpreter
+  -Integers Not Supported
+Version 1.1
+  -Added Support for Integers (Again)
+  -Uploaded to github
