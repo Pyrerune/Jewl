@@ -1,5 +1,4 @@
-
-Str test="hello";
-Str test1="no";
-println $test;
-println "hi";
+Int fire = 20+20;
+Int flame = 50+1;
+println 20;
+println ${fire} + ${flame};
