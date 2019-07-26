@@ -4,7 +4,7 @@
 #include "Interpreter.h"
 int main(int argc, char *argv[]) {
   Interpreter interpreter;
-  double version = 1.1;
+  double version = 2.0;
   if(argv[1] == NULL) {
     std::cout << "NullFileException: No Filename Given" << std::endl << "Required At line 9" << std::endl;
     return 1;

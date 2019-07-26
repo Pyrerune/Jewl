@@ -1,4 +1,4 @@
-Int fire = 20+20;
-Int flame = 50+1;
+Str Shadow="FUCK";
 println 20;
-println ${fire} + ${flame};
+
+println $Shadow;
