@@ -116,6 +116,11 @@ int Interpreter::run(char token[], int size) {
 			}
 			varFullName.push_back(var);
 			varFullContent.push_back(varContent);
+
+		} else if(token[i] == 'I' && token[i+1] == 'n' && token[i+2] == 't') {
+			lined = false;
+			print = false;
+
 		}
 
 		//format and print strings
@@ -136,9 +141,7 @@ int Interpreter::run(char token[], int size) {
 				} else if(lined == true) {
 					std::cout << word << std::endl;
 				}
-			} else if(var == true && string == true) {
-				strVar == word;
-			}
+			} 
 		} else if(token[i] == '1' || token[i] == '2' || token[i] == '3' || token[i] == '4' || token[i] == '5' || token[i] == '6' || token[i] == '7' || token[i] == '8' || token[i] == '9' || token[i] == '0') {
 			if(token[i+1] == '1' || token[i+1] == '2' || token[i+1] == '3' || token[i+1] == '4' || token[i+1] == '5' || token[i+1] == '6' || token[i+1] == '7' || token[i+1] == '8' || token[i+1] == '9' || token[i+1] == '0') {
 				if(token[i+3] == '1' || token[i+3] == '2' || token[i+3] == '3' || token[i+3] == '4' || token[i+3] == '5' || token[i+3] == '6' || token[i+3] == '7' || token[i+3] == '8' || token[i+3] == '9' || token[i+3] == '0') {
