@@ -51,6 +51,7 @@ int Interpreter::run(char token[], int size) {
 	bool print = false;
 	bool var = false;
 	bool integer = false;
+	bool ifBool = false;
 	int digit_first = 0;
 	int digit_second = 0;
 	std::vector <std::string> varFullName;
@@ -163,8 +164,13 @@ int Interpreter::run(char token[], int size) {
 			varFullContent.push_back(" ");
 			varType.push_back("Integer");
 			//std::cout << varContent;
+
+		} else if(token[i] == 'i' && token[i+1] == 'f') {
+			ifBool = true;
 		}
+
 	//	print = false;
+
 
 	//print = false;
 		//format and print strings
