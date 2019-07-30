@@ -165,8 +165,98 @@ int Interpreter::run(char token[], int size) {
 			varType.push_back("Integer");
 			//std::cout << varContent;
 
-		} else if(token[i] == 'i' && token[i+1] == 'f') {
-			ifBool = true;
+		} else if(token[i] == 'i' && token[i+1] == 'f' && token[i+3] == '[') {
+			std::string condition;
+			
+			for(int x = 0; token[i+5+x] != ']'; x++) {
+				int intResult;
+				int cmpInt;
+				std::string strResult;
+				std::string cmpStr;
+				if(token[i+5+x] == '+') {
+					if(token[i+5+x-2] == '1' || token[i+5+x-2] == '2' || token[i+5+x-2] == '3' || token[i+5+x-2] == '4' || token[i+5+x-2] == '5' || token[i+5+x-2] == '6' || token[i+5+x-2] == '7' || token[i+5+x-2] == '8' || token[i+5+x-2] == '9' || token[i+5+x-2] == '0') {
+						
+						if(token[i+5+x-1] == '1' || token[i+5+x-1] == '2' || token[i+5+x-1] == '3' || token[i+5+x-1] == '4' || token[i+5+x-1] == '5' || token[i+5+x-1] == '6' || token[i+5+x-1] == '7' || token[i+5+x-1] == '8' || token[i+5+x-1] == '9' || token[i+5+x-1] == '0') {
+							if(token[i+5+x+1] == '1' || token[i+5+x+1] == '2' || token[i+5+x+1] == '3' || token[i+5+x+1] == '4' || token[i+5+x+1] == '5' || token[i+5+x+1] == '6' || token[i+5+x+1] == '7' || token[i+5+x+1] == '8' || token[i+5+x+1] == '9' || token[i+5+x+1] == '0') {
+								if(token[i+5+x+2] == '1' || token[i+5+x+2] == '2' || token[i+5+x+2] == '3' || token[i+5+x+2] == '4' || token[i+5+x+2] == '5' || token[i+5+x+2] == '6' || token[i+5+x+2] == '7' || token[i+5+x+2] == '8' || token[i+5+x+2] == '9' || token[i+5+x+2] == '0') {
+									int num = token[i+5+x-2];
+									int num1 = token[i+5+x-1];
+									int num2 = token[i+5+x+1];
+									int num3 = token[i+5+x+2];
+									num = convertInt(num);
+									num1 = convertInt(num1);
+									num2 = convertInt(num2);
+									num3 = convertInt(num3);
+									num = num * 10;
+									num2 = num2 * 10;
+									num = num + num1;
+									num2 = num2 + num3;
+									num = num + num2;
+									intResult = num;
+								} else {
+									int num = token[i+x+5-2];
+									int num1 = token[i+x+5-1];
+									int num2 = token[i+x+5+1];
+									num = convertInt(num);
+									num1 = convertInt(num1);
+									num2 = convertInt(num2);
+									num = num * 10;
+									num = num + num1;
+									num = num + num2;
+									intResult = num;
+								}
+							}
+						}
+					
+					} else if(token[i+x+5-1] == '1' || token[i+x+5-1] == '2' || token[i+x+5-1] == '3' || token[i+x+5-1] == '4' || token[i+x+5-1] == '5' || token[i+x+5-1] == '6' || token[i+x+5-1] == '7' || token[i+x+5-1] == '8' || token[i+x+5-1] == '9' || token[i+x+5-1] == '0') {
+							if(token[i+x+5+1] == '1' || token[i+x+5-1] == '2' || token[i+x+5+1] == '3' || token[i+x+5+1] == '4' || token[i+x+5+1] == '5' || token[i+x+5+1] == '6' || token[i+x+5+1] == '7' || token[i+x+5+1] == '8' || token[i+x+5+1] == '9' || token[i+x+5+1] == '0') {
+								if(token[i+x+5+2] == '1' || token[i+x+5+2] == '2' || token[i+x+5+2] == '3' || token[i+x+5+2] == '4' || token[i+x+5+2] == '5' || token[i+x+5+2] == '6' || token[i+x+5+2] == '7' || token[i+x+5+2] == '8' || token[i+x+5+2] == '9' || token[i+x+5+2] == '0') {
+									int num = token[i+x+5-1];
+									int num1 = token[i+x+5+1];
+									int num2 = token[i+x+5+2];
+									num = convertInt(num);
+									num1 = convertInt(num1);
+									num2 = convertInt(num2);
+									num1 = num1 * 10;
+									num1 = num1 + num2;
+									num = num + num1;
+									intResult = num;
+								} else {
+									int num = token[i+x+5-1];
+									int num1 = token[i+x+5+1];
+									num = convertInt(num);
+									num1 = convertInt(num1);
+									num = num + num1;
+									intResult = num;
+								}
+							}
+						}
+				} else if(token[i+x+5] == '==') {
+					if(intResult != NULL) {
+						if(token[i+x+5+2] == '1' || token[i+x+5+2] == '2' || token[i+x+5+2] == '3' || token[i+x+5+2] == '4' || token[i+x+5+2] == '5' || token[i+x+5+2] == '6' || token[i+x+5+2] == '7' || token[i+x+5+2] == '8' || token[i+x+5+2] == '9' || token[i+x+5+2] == '0') {
+							if(token[i+x+5+1] == '1' || token[i+x+5+1] == '2' || token[i+x+5+1] == '3' || token[i+x+5+1] == '4' || token[i+x+5+1] == '5' || token[i+x+5+1] == '6' || token[i+x+5+1] == '7' || token[i+x+5+1] == '8' || token[i+x+5+1] == '9' || token[i+x+5+1] == '0') {
+								int num = token[i+x+5+2];
+								int num1 = token[i+x+5+1];
+								num = convertInt(num);
+								num1 = convertInt(num1);
+								num = num * 10;
+								num = num + num1;
+								cmpInt = num;
+							}
+						} else if(token[i+x+5+1] == '1' || token[i+x+5+1] == '2' || token[i+x+5+1] == '3' || token[i+x+5+1] == '4' || token[i+x+5+1] == '5' || token[i+x+5+1] == '6' || token[i+x+5+1] == '7' || token[i+x+5+1] == '8' || token[i+x+5+1] == '9' || token[i+x+5+1] == '0') {
+								int num = token[i+x+5+2];
+								num = convertInt(num);
+								cmpInt = num;
+						}
+						if(intResult == cmpInt) {
+							ifBool = true;
+						} else {
+							ifBool = false;
+						}
+					}
+				}
+				
+			}
 		}
 
 	//	print = false;
