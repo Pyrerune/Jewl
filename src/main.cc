@@ -4,7 +4,7 @@
 #include "Interpreter.h"
 int main(int argc, char *argv[]) {
   Interpreter interpreter;
-  std::string version = "2.0.1";
+  std::string version = "3.1.0";
   if(argv[1] == NULL) {
     std::cout << "NullFileException: No Filename Given" << std::endl << "Required At line 9" << std::endl;
     return 1;
@@ -19,7 +19,7 @@ int main(int argc, char *argv[]) {
   std::string file = argv[1];
   std::string line;
   std::ifstream t(file);
-
+ 
   //std::cout << count;
   std::string contents { std::istreambuf_iterator<char>(t), std::istreambuf_iterator<char>() };
   contents.append("<EOF>");
