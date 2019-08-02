@@ -1,6 +1,6 @@
 ##
 ## Auto Generated makefile by CodeLite IDE
-## any manual changes will be erased      
+## any manual changes will be erased
 ##
 ## Release
 ProjectName            :=Jewl
@@ -20,28 +20,28 @@ SharedObjectLinkerName :=/usr/bin/g++ -shared -fPIC
 ObjectSuffix           :=.o
 DependSuffix           :=.o.d
 PreprocessSuffix       :=.i
-DebugSwitch            :=-g 
+DebugSwitch            :=-g
 IncludeSwitch          :=-I
 LibrarySwitch          :=-l
-OutputSwitch           :=-o 
+OutputSwitch           :=-o
 LibraryPathSwitch      :=-L
 PreprocessorSwitch     :=-D
-SourceSwitch           :=-c 
+SourceSwitch           :=-c
 OutputFile             :=$(IntermediateDirectory)/$(ProjectName)
-Preprocessors          :=$(PreprocessorSwitch)NDEBUG 
-ObjectSwitch           :=-o 
-ArchiveOutputSwitch    := 
+Preprocessors          :=$(PreprocessorSwitch)NDEBUG
+ObjectSwitch           :=-o
+ArchiveOutputSwitch    :=
 PreprocessOnlySwitch   :=-E
 ObjectsFileList        :="Jewl.txt"
 PCHCompileFlags        :=
 MakeDirCommand         :=mkdir -p
-LinkOptions            :=  
-IncludePath            :=  $(IncludeSwitch). $(IncludeSwitch). 
-IncludePCH             := 
-RcIncludePath          := 
-Libs                   := 
-ArLibs                 :=  
-LibPath                := $(LibraryPathSwitch). 
+LinkOptions            :=
+IncludePath            :=  $(IncludeSwitch). $(IncludeSwitch).
+IncludePCH             :=
+RcIncludePath          :=
+Libs                   :=
+ArLibs                 :=
+LibPath                := $(LibraryPathSwitch).
 
 ##
 ## Common variables
@@ -52,7 +52,7 @@ CXX      := /usr/bin/g++
 CC       := /usr/bin/gcc
 CXXFLAGS :=  -O2 -Wall $(Preprocessors)
 CFLAGS   :=  -O2 -Wall $(Preprocessors)
-ASFLAGS  := 
+ASFLAGS  :=
 AS       := /usr/bin/as
 
 
@@ -60,19 +60,19 @@ AS       := /usr/bin/as
 ## User defined environment variables
 ##
 CodeLiteDir:=/usr/share/codelite
-Objects0=$(IntermediateDirectory)/src_Interpreter.cc$(ObjectSuffix) $(IntermediateDirectory)/src_main.cc$(ObjectSuffix) 
+Objects0=$(IntermediateDirectory)/src_Interpreter.cc$(ObjectSuffix) $(IntermediateDirectory)/src_main.cc$(ObjectSuffix)
 
 
 
-Objects=$(Objects0) 
+Objects=$(Objects0)
 
 ##
-## Main Build Targets 
+## Main Build Targets
 ##
 .PHONY: all clean PreBuild PrePreBuild PostBuild MakeIntermediateDirs
 all: $(OutputFile)
 
-$(OutputFile): $(IntermediateDirectory)/.d $(Objects) 
+$(OutputFile): $(IntermediateDirectory)/.d $(Objects)
 	@$(MakeDirCommand) $(@D)
 	@echo "" > $(IntermediateDirectory)/.d
 	@echo $(Objects0)  > $(ObjectsFileList)
@@ -116,4 +116,3 @@ clean:
 	$(RM) -r ./Release/
 install:
 	mv ./Release/Jewl ~/bin/jewl
-
