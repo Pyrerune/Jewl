@@ -166,10 +166,11 @@ int Interpreter::run(char token[], int size) {
 			varType.push_back("Integer");
 			//std::cout << varContent;
 
-		} else if(token[i] == 'i' && token[i+1] == 'f' && token[i+3] == '[') {
+		} else if(token[i] == 'i' && token[i+1] == 'f' && token[i+2] == '(') {
+			int len = 0;
+			for(int x = -1; token[i+5+x] != ')'; x++) {
 
-			ifCond = true;
-			for(int x = 0; token[i+5+x] != ']'; x++) {
+				//std::cout << token[i+x+5+2] << token[i+x+5+3];
 				int intResult;
 				int cmpInt;
 				std::string strResult;
@@ -242,8 +243,8 @@ int Interpreter::run(char token[], int size) {
 					if(intResult != NULL) {
 						if(token[i+x+5+3] == '1' || token[i+x+5+3] == '2' || token[i+x+5+3] == '3' || token[i+x+5+3] == '4' || token[i+x+5+3] == '5' || token[i+x+5+3] == '6' || token[i+x+5+3] == '7' || token[i+x+5+3] == '8' || token[i+x+5+3] == '9' || token[i+x+5+3] == '0') {
 							if(token[i+x+5+2] == '1' || token[i+x+5+2] == '2' || token[i+x+5+2] == '3' || token[i+x+5+2] == '4' || token[i+x+5+2] == '5' || token[i+x+5+2] == '6' || token[i+x+5+2] == '7' || token[i+x+5+2] == '8' || token[i+x+5+2] == '9' || token[i+x+5+2] == '0') {
-								int num = token[i+x+5+3];
-								int num1 = token[i+x+5+2];
+								int num = token[i+x+5+2];
+								int num1 = token[i+x+5+3];
 								num = convertInt(num);
 								num1 = convertInt(num1);
 								num = num * 10;
@@ -265,15 +266,23 @@ int Interpreter::run(char token[], int size) {
 						}
 					}
 				}
-
-			//std::cout << intResult << "-";
+				len = x;
+			//std::cout << intResult << "-" << cmpInt << " ";
 			}
+			//std::cout << token[i+3+len+5] << " YAYAYAYAYA";
+			if(token[i+3+5+len] == '{') {
+
+				ifCond = true;
+			} else {
+				continue;
+			}
+		} else if(ifCond == true && token[i] == '}') {
+			ifCond = false;
 		}
 
+
+
 	//	print = false;
-
-
-	//print = false;
 		//format and print strings
 		if(token[i] == '"') {
 			std::string word;
@@ -335,10 +344,22 @@ int Interpreter::run(char token[], int size) {
 							num = num / num2;
 						}
 						if(print == true) {
-							if(lined == true) {
-								std::cout << num << std::endl;
+							if(ifCond == true) {
+								if(ifBool == true) {
+									if(lined == true) {
+										std::cout << num << std::endl;
+									} else {
+										std::cout << num;
+									}
+								} else {
+									continue;
+								}
 							} else {
-								std::cout << num;
+								if(lined == true) {
+									std::cout << num << std::endl;
+								} else {
+									std::cout << num;
+								}
 							}
 						}
 						i++;
@@ -366,10 +387,22 @@ int Interpreter::run(char token[], int size) {
 
 						}
 						if(print == true) {
-							if(lined == true) {
-								std::cout << num << std::endl;
+							if(ifCond == true) {
+								if(ifBool == true) {
+									if(lined == true) {
+										std::cout << num << std::endl;
+									} else {
+										std::cout << num;
+									}
+								} else {
+									continue;
+								}
 							} else {
-								std::cout << num;
+								if(lined == true) {
+									std::cout << num << std::endl;
+								} else {
+									std::cout << num;
+								}
 							}
 						}
 						i++;
@@ -385,10 +418,22 @@ int Interpreter::run(char token[], int size) {
 					num = num * 10;
 					num = num + num1;
 					if(print == true) {
-						if(lined == true) {
-							std::cout << num << std::endl;
+						if(ifCond == true) {
+							if(ifBool == true) {
+								if(lined == true) {
+									std::cout << num << std::endl;
+								} else {
+									std::cout << num;
+								}
+							} else {
+								continue;
+							}
 						} else {
-							std::cout << num;
+							if(lined == true) {
+								std::cout << num << std::endl;
+							} else {
+								std::cout << num;
+							}
 						}
 					}
 				}
@@ -417,10 +462,22 @@ int Interpreter::run(char token[], int size) {
 
 					}
 					if(print == true) {
-						if(lined == true) {
-							std::cout << num << std::endl;
+						if(ifCond == true) {
+							if(ifBool == true) {
+								if(lined == true) {
+									std::cout << num << std::endl;
+								} else {
+									std::cout << num;
+								}
+							} else {
+								continue;
+							}
 						} else {
-							std::cout << num;
+							if(lined == true) {
+								std::cout << num << std::endl;
+							} else {
+								std::cout << num;
+							}
 						}
 					}
 					i++;
@@ -442,10 +499,22 @@ int Interpreter::run(char token[], int size) {
 
 				}
 				if(print == true) {
-					if(lined == true) {
-						std::cout << num << std::endl;
+					if(ifCond == true) {
+						if(ifBool == true) {
+							if(lined == true) {
+								std::cout << num << std::endl;
+							} else {
+								std::cout << num;
+							}
+						} else {
+							continue;
+						}
 					} else {
-						std::cout << num;
+						if(lined == true) {
+							std::cout << num << std::endl;
+						} else {
+							std::cout << num;
+						}
 					}
 				}
 			}
@@ -456,18 +525,28 @@ int Interpreter::run(char token[], int size) {
 				int num = token[i];
 				num = convertInt(num);
 				if(print == true) {
-					if(lined == true) {
-						std::cout << num << std::endl;
+					if(ifCond == true) {
+						if(ifBool == true) {
+							if(lined == true) {
+								std::cout << num << std::endl;
+							} else {
+								std::cout << num;
+							}
+						} else {
+							continue;
+						}
 					} else {
-						std::cout << num;
+						if(lined == true) {
+							std::cout << num << std::endl;
+						} else {
+							std::cout << num;
+						}
 					}
 				}
 
 				i++;
 			}
-		}
-
-		else if(token[i] == '$') {
+		} else if(token[i] == '$') {
 			std::string varName;
 			std::string varNameInt;
 			std::string varContent;
@@ -502,20 +581,41 @@ int Interpreter::run(char token[], int size) {
 				return 2;
 			} else {
 				if(print == true) {
-					if(lined == true) {
-						if(varType[index[0]] == "String") {
-							std::cout << varFullContent[index[0]] << std::endl;
-						} else if(varType[index[0]] == "Integer") {
-							std::cout << varFullContentInt[index[0]] << std::endl;
+					if(ifCond == true) {
+						if(ifBool == true) {
+							if(lined == true) {
+								if(varType[index[0]] == "String") {
+									std::cout << varFullContent[index[0]] << std::endl;
+								} else if(varType[index[0]] == "Integer") {
+									std::cout << varFullContentInt[index[0]] << std::endl;
+								}
+							} else {
+								if(varType[index[0]] == "String") {
+									std::cout << varFullContent[index[0]];
+								} else if(varType[index[0]] == "Integer") {
+									std::cout << varFullContentInt[index[0]];
+								}
+							}
+						} else {
+							continue;
 						}
 					} else {
-						if(varType[index[0]] == "String") {
-							std::cout << varFullContent[index[0]];
-						} else if(varType[index[0]] == "Integer") {
-							std::cout << varFullContentInt[index[0]];
+						if(lined == true) {
+							if(varType[index[0]] == "String") {
+								std::cout << varFullContent[index[0]] << std::endl;
+							} else if(varType[index[0]] == "Integer") {
+								std::cout << varFullContentInt[index[0]] << std::endl;
+							}
+						} else {
+							if(varType[index[0]] == "String") {
+								std::cout << varFullContent[index[0]];
+							} else if(varType[index[0]] == "Integer") {
+								std::cout << varFullContentInt[index[0]];
+							}
 						}
 					}
 				}
+
 			}
 
 		}

@@ -1,2 +1,4 @@
-if [1+1==3]
-  println "test";
+if(1+1==3) {
+  println "HI!";
+}
+println "World";

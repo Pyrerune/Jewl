@@ -1,3 +1,6 @@
+if(14+1==15) {
+  println "works";
+}
 print 1;
 print "========";
 print 10;
@@ -33,7 +36,7 @@ print 10*10;
 print "========";
 print 10/10;
 print "========";
-println 1;
+
 println "========";
 println 10;
 println 1+1;
@@ -120,7 +123,7 @@ println "========";
 Int ib=10;
 Int x=1;
 Str z="y";
-Str y="z"
+Str y="z";
 println $ib;
 println $x;
 println $z;
