@@ -14,6 +14,9 @@ Version 1.1
   -Uploaded to github
 Version 2.0
   -Added String Variables
-Version 3.0(Beta)
+Version 3.0
   -Added Integer Variables
   -Added If Statements
+Version 3.1(Current)
+  -Fixed If Statements
+  -If Statements currently affect all code below them

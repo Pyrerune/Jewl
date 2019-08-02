@@ -167,7 +167,7 @@ int Interpreter::run(char token[], int size) {
 			//std::cout << varContent;
 
 		} else if(token[i] == 'i' && token[i+1] == 'f' && token[i+3] == '[') {
-			
+
 			ifCond = true;
 			for(int x = 0; token[i+5+x] != ']'; x++) {
 				int intResult;
@@ -176,7 +176,7 @@ int Interpreter::run(char token[], int size) {
 				std::string cmpStr;
 				if(token[i+5+x] == '+') {
 					if(token[i+5+x-2] == '1' || token[i+5+x-2] == '2' || token[i+5+x-2] == '3' || token[i+5+x-2] == '4' || token[i+5+x-2] == '5' || token[i+5+x-2] == '6' || token[i+5+x-2] == '7' || token[i+5+x-2] == '8' || token[i+5+x-2] == '9' || token[i+5+x-2] == '0') {
-						
+
 						if(token[i+5+x-1] == '1' || token[i+5+x-1] == '2' || token[i+5+x-1] == '3' || token[i+5+x-1] == '4' || token[i+5+x-1] == '5' || token[i+5+x-1] == '6' || token[i+5+x-1] == '7' || token[i+5+x-1] == '8' || token[i+5+x-1] == '9' || token[i+5+x-1] == '0') {
 							if(token[i+5+x+1] == '1' || token[i+5+x+1] == '2' || token[i+5+x+1] == '3' || token[i+5+x+1] == '4' || token[i+5+x+1] == '5' || token[i+5+x+1] == '6' || token[i+5+x+1] == '7' || token[i+5+x+1] == '8' || token[i+5+x+1] == '9' || token[i+5+x+1] == '0') {
 								if(token[i+5+x+2] == '1' || token[i+5+x+2] == '2' || token[i+5+x+2] == '3' || token[i+5+x+2] == '4' || token[i+5+x+2] == '5' || token[i+5+x+2] == '6' || token[i+5+x+2] == '7' || token[i+5+x+2] == '8' || token[i+5+x+2] == '9' || token[i+5+x+2] == '0') {
@@ -205,11 +205,11 @@ int Interpreter::run(char token[], int size) {
 									num = num + num1;
 									num = num + num2;
 									intResult = num;
-									
+
 								}
 							}
 						}
-					
+
 					} else if(token[i+x+5-1] == '1' || token[i+x+5-1] == '2' || token[i+x+5-1] == '3' || token[i+x+5-1] == '4' || token[i+x+5-1] == '5' || token[i+x+5-1] == '6' || token[i+x+5-1] == '7' || token[i+x+5-1] == '8' || token[i+x+5-1] == '9' || token[i+x+5-1] == '0') {
 							if(token[i+x+5+1] == '1' || token[i+x+5-1] == '2' || token[i+x+5+1] == '3' || token[i+x+5+1] == '4' || token[i+x+5+1] == '5' || token[i+x+5+1] == '6' || token[i+x+5+1] == '7' || token[i+x+5+1] == '8' || token[i+x+5+1] == '9' || token[i+x+5+1] == '0') {
 								if(token[i+x+5+2] == '1' || token[i+x+5+2] == '2' || token[i+x+5+2] == '3' || token[i+x+5+2] == '4' || token[i+x+5+2] == '5' || token[i+x+5+2] == '6' || token[i+x+5+2] == '7' || token[i+x+5+2] == '8' || token[i+x+5+2] == '9' || token[i+x+5+2] == '0') {
@@ -223,40 +223,41 @@ int Interpreter::run(char token[], int size) {
 									num1 = num1 + num2;
 									num = num + num1;
 									intResult = num;
-									
-									
+
+
 								} else {
 									int num = token[i+x+5-1];
 									int num1 = token[i+x+5+1];
 									num = convertInt(num);
 									num1 = convertInt(num1);
 									num = num + num1;
-									
+
 									intResult = num;
-									
-									
+
+
 								}
 							}
 						}
 				} else if(token[i+x+5] == '=' && token[i+5+x+1] == '=') {
 					if(intResult != NULL) {
-						if(token[i+x+5+2] == '1' || token[i+x+5+2] == '2' || token[i+x+5+2] == '3' || token[i+x+5+2] == '4' || token[i+x+5+2] == '5' || token[i+x+5+2] == '6' || token[i+x+5+2] == '7' || token[i+x+5+2] == '8' || token[i+x+5+2] == '9' || token[i+x+5+2] == '0') {
-							if(token[i+x+5+1] == '1' || token[i+x+5+1] == '2' || token[i+x+5+1] == '3' || token[i+x+5+1] == '4' || token[i+x+5+1] == '5' || token[i+x+5+1] == '6' || token[i+x+5+1] == '7' || token[i+x+5+1] == '8' || token[i+x+5+1] == '9' || token[i+x+5+1] == '0') {
-								int num = token[i+x+5+2];
-								int num1 = token[i+x+5+1];
+						if(token[i+x+5+3] == '1' || token[i+x+5+3] == '2' || token[i+x+5+3] == '3' || token[i+x+5+3] == '4' || token[i+x+5+3] == '5' || token[i+x+5+3] == '6' || token[i+x+5+3] == '7' || token[i+x+5+3] == '8' || token[i+x+5+3] == '9' || token[i+x+5+3] == '0') {
+							if(token[i+x+5+2] == '1' || token[i+x+5+2] == '2' || token[i+x+5+2] == '3' || token[i+x+5+2] == '4' || token[i+x+5+2] == '5' || token[i+x+5+2] == '6' || token[i+x+5+2] == '7' || token[i+x+5+2] == '8' || token[i+x+5+2] == '9' || token[i+x+5+2] == '0') {
+								int num = token[i+x+5+3];
+								int num1 = token[i+x+5+2];
 								num = convertInt(num);
 								num1 = convertInt(num1);
 								num = num * 10;
 								num = num + num1;
 								cmpInt = num;
-								
+
 							}
-						} else if(token[i+x+5+1] == '1' || token[i+x+5+1] == '2' || token[i+x+5+1] == '3' || token[i+x+5+1] == '4' || token[i+x+5+1] == '5' || token[i+x+5+1] == '6' || token[i+x+5+1] == '7' || token[i+x+5+1] == '8' || token[i+x+5+1] == '9' || token[i+x+5+1] == '0') {
+						} else if(token[i+x+5+2] == '1' || token[i+x+5+2] == '2' || token[i+x+5+2] == '3' || token[i+x+5+2] == '4' || token[i+x+5+2] == '5' || token[i+x+5+2] == '6' || token[i+x+5+2] == '7' || token[i+x+5+2] == '8' || token[i+x+5+2] == '9' || token[i+x+5+2] == '0') {
 								int num = token[i+x+5+2];
 								num = convertInt(num);
 								cmpInt = num;
-								
+
 						}
+
 						if(intResult == cmpInt) {
 							ifBool = true;
 						} else {
@@ -264,10 +265,9 @@ int Interpreter::run(char token[], int size) {
 						}
 					}
 				}
-				
+
 			//std::cout << intResult << "-";
 			}
-			std::cout << true;
 		}
 
 	//	print = false;
@@ -297,7 +297,7 @@ int Interpreter::run(char token[], int size) {
 					} else {
 						continue;
 					}
-					
+
 				} else {
 					if(lined == false) {
 							std::cout << word;
@@ -307,7 +307,7 @@ int Interpreter::run(char token[], int size) {
 				}
 			}
 		}
-		
+
 			else if(token[i] == '1' || token[i] == '2' || token[i] == '3' || token[i] == '4' || token[i] == '5' || token[i] == '6' || token[i] == '7' || token[i] == '8' || token[i] == '9' || token[i] == '0') {
 			if(token[i+1] == '1' || token[i+1] == '2' || token[i+1] == '3' || token[i+1] == '4' || token[i+1] == '5' || token[i+1] == '6' || token[i+1] == '7' || token[i+1] == '8' || token[i+1] == '9' || token[i+1] == '0') {
 				if(token[i+3] == '1' || token[i+3] == '2' || token[i+3] == '3' || token[i+3] == '4' || token[i+3] == '5' || token[i+3] == '6' || token[i+3] == '7' || token[i+3] == '8' || token[i+3] == '9' || token[i+3] == '0') {
@@ -523,7 +523,6 @@ int Interpreter::run(char token[], int size) {
 		if(token[i+1] == ';') {
 			continue;
 		}
-
 
 		}
 
