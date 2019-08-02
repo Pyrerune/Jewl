@@ -3,3 +3,5 @@ compile_commands.json
 process-palette.json
 compile_flags.txt
 Jewl.project
+Release/
+Jewl.txt
