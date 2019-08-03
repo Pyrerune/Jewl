@@ -1,6 +1,8 @@
 if(14+1==15) {
   println "works";
 }
+input hell;
+println ${hell};
 print 1;
 print "========";
 print 10;

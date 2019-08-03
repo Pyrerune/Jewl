@@ -4,7 +4,7 @@
 #include "Interpreter.h"
 int main(int argc, char *argv[]) {
   Interpreter interpreter;
-  std::string version = "3.1.1";
+  std::string version = "4.0.0";
   if(argv[1] == NULL) {
     std::cout << "NullFileException: No Filename Given" << std::endl << "Required At line 9" << std::endl;
     return 1;
@@ -29,14 +29,15 @@ int main(int argc, char *argv[]) {
   int end = interpreter.run(arr, contents.length());
   switch(end) {
     case 1:
-      std::cout << std::endl << "GENERAL ERROR" << std::endl;
-      break;
+		std::cout << std::endl << "GENERAL ERROR" << std::endl;
+		break;
     case 2:
-      std::cout << std::endl << "DuplicateVarNameError" << std::endl;
-      break;
+		std::cout << std::endl << "DuplicateVarNameError" << std::endl;
+		break;
     case 3:
-      std::cout << std::endl << "UnTerminatedPrintFunction" << std::endl;
-
+		std::cout << std::endl << "UnTerminatedPrintFunction" << std::endl;
+		break;
+	
   }
   return 0;
 }

@@ -45,24 +45,17 @@ int convertInt(int ch1) {
 
 int Interpreter::run(char token[], int size) {
 	int lines = 0;
-	int end = 0;
 	size = size - 1;
 	bool lined = false;
 	bool print = false;
-	bool var = false;
-	bool integer = false;
 	bool ifBool = false;
 	bool ifCond = false;
-	int digit_first = 0;
-	int digit_second = 0;
 	std::vector <std::string> varFullName;
 	std::vector <std::string> varFullContent;
 	std::vector <int> varFullContentInt;
 	std::vector <std::string> varType;
 	std::string strVar = "";
 
-	int intVar = 0;
-	char expr = ' ';
 	for (int i = 0; i <= size; i++) {
 		char tok = token[i];
 		//formatting
@@ -85,17 +78,13 @@ int Interpreter::run(char token[], int size) {
 		//setup for printing
 		if(token[i] == 'p' && token[i+1] == 'r' && token[i+2] == 'i' && token[i+3] == 'n' && token[i+4] == 't' && token[i+5] == 'l' && token[i+6] == 'n') {
 			lined = true;
-			var = false;
 			print = true;
 		} else if(token[i] == 'p' && token[i+1] == 'r' && token[i+2] == 'i' && token[i+3] == 'n' && token[i+4] == 't' && token[i+5] != 'l') {
 			lined = false;
-			var = false;
 			print = true;
 		} else if(token[i] == 'S' && token[i+1] == 't' && token[i+2] == 'r') {
 			lined = false;
 			print = false;
-			var = true;
-			integer = false;
 			std::string var;
 			std::string varContent;
 			for(int x = 1; token[i+3+x] != '='; x++) {
@@ -104,7 +93,6 @@ int Interpreter::run(char token[], int size) {
 				char* ch = const_cast<char*>(chstr.c_str());
 				var.append(ch);
 			}
-			//std::cout << var.length();
 			if(token[i+3+var.length()+1] == '=' && token[i+3+var.length()+2] == '"') {
 				for(int x = 2; token[i+3+var.length()+x] != ';'; x++) {
 					int y = 3+var.length();
@@ -126,7 +114,6 @@ int Interpreter::run(char token[], int size) {
 			int varContent;
 			lined = false;
 			print = false;
-			integer = true;
 			for(int x = 0; token[i+3+x] != '='; x++) {
 				if(token[i+3+x] == ' ') {
 
@@ -137,7 +124,6 @@ int Interpreter::run(char token[], int size) {
 				}
 			}
 			if(token[i+3+var.length()+1] == '=') {
-				//std::cout << token[i+3+var.length()+2];
 				for(int x = var.length() + 5; token[i+x] != ';'; x++) {
 					if(token[i+x] == '1' || token[i+x] == '2' || token[i+x] == '3' || token[i+x] == '4' || token[i+x] == '5' || token[i+x] == '6' || token[i+x] == '7' || token[i+x] == '8' || token[i+x] == '9' || token[i+x] == '0') {
 						if(token[i+x+1] == '1' || token[i+x+1] == '2' || token[i+x+1] == '3' || token[i+x+1] == '4' || token[i+x+1] == '5' || token[i+x+1] == '6' || token[i+x+1] == '7' || token[i+x+1] == '8' || token[i+x+1] == '9' || token[i+x+1] == '0') {
@@ -154,7 +140,6 @@ int Interpreter::run(char token[], int size) {
 							int num = token[i+x];
 							num = convertInt(num);
 
-							//std::cout << i+x << std::endl;
 							varContent = num;
 						}
 					}
@@ -164,13 +149,11 @@ int Interpreter::run(char token[], int size) {
 			varFullContentInt.push_back(varContent);
 			varFullContent.push_back(" ");
 			varType.push_back("Integer");
-			//std::cout << varContent;
 
 		} else if(token[i] == 'i' && token[i+1] == 'f' && token[i+2] == '(') {
 			int len = 0;
 			for(int x = -1; token[i+5+x] != ')'; x++) {
 
-				//std::cout << token[i+x+5+2] << token[i+x+5+3];
 				int intResult;
 				int cmpInt;
 				std::string strResult;
@@ -267,9 +250,7 @@ int Interpreter::run(char token[], int size) {
 					}
 				}
 				len = x;
-			//std::cout << intResult << "-" << cmpInt << " ";
 			}
-			//std::cout << token[i+3+len+5] << " YAYAYAYAYA";
 			if(token[i+3+5+len] == '{') {
 
 				ifCond = true;
@@ -278,6 +259,24 @@ int Interpreter::run(char token[], int size) {
 			}
 		} else if(ifCond == true && token[i] == '}') {
 			ifCond = false;
+		} else if(token[i] == 'i' && token[i+1] == 'n' && token[i+2] == 'p' && token[i+3] == 'u' && token[i+4] == 't') {
+			std::string varname;
+			std::string varContent;
+			std::cin >> varContent;
+			for(int x = 5; token[i+x] != ';'; x++) {
+				if(token[i+x] == ' ') {
+					
+				} else {
+					std::string chstr(1, token[i+x]);
+					char* ch = const_cast<char*>(chstr.c_str());
+					varname.append(ch);
+				
+				}
+			}
+			varFullName.push_back(varname);
+			varFullContent.push_back(varContent);
+			varFullContentInt.push_back(0);
+			varType.push_back("String");
 		}
 
 
@@ -546,14 +545,14 @@ int Interpreter::run(char token[], int size) {
 
 				i++;
 			}
-		} else if(token[i] == '$') {
+		} else if(token[i] == '$' && token[i+1] == '{') {
 			std::string varName;
 			std::string varNameInt;
 			std::string varContent;
 			std::string varNamecmp;
 
-			for(int x = 0; token[i+x] != ';'; x++) {
-				if(token[i+x] == '$') {
+			for(int x = 0; token[i+x] != '}'; x++) {
+				if(token[i+x] == '$' || token[i+x] == '{') {
 
 				} else {
 					std::string chstr(1, token[i+x]);
@@ -567,7 +566,7 @@ int Interpreter::run(char token[], int size) {
 			std::vector<int> index;
 
 			index = getIndex(varFullName, varName);
-
+			
 			if(index.size() < 1) {
 				continue;
 			}
@@ -619,7 +618,6 @@ int Interpreter::run(char token[], int size) {
 			}
 
 		}
-
 		if(token[i+1] == ';') {
 			continue;
 		}
