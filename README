@@ -1,7 +1,12 @@
-==========Installation==========
+=========Installation========
 run configure (In a Separate Directory (good habit to learn)) -p /path/to/install/jewl/binary
 run make
 run sudo make install 
 ===========Caution===========
 This Source Code was only tested with linux
 Some parts may not work with windows or macos
+Some parts of this code may be unstable as I haven't been able to test all of it
+
+==========Contribution========
+Any Contribution is welcomed.
+I am still hesitant on allowing code Contribution
