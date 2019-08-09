@@ -9,6 +9,7 @@ int main(int argc, char *argv[]) {
     std::cout << "NullFileException: No Filename Given" << std::endl << "Required At line 9" << std::endl;
     return 1;
   }
+  
   if(strcmp(argv[1], "-v") == false || strcmp(argv[1], "--version") == false) {
     std::cout << "====================" << std::endl;
     std::cout << "========JEWL========" << std::endl;

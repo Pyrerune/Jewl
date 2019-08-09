@@ -1,8 +1,7 @@
 ==========Installation==========
-To Build the Project run make
-To Install the Built binary run make -j4 -e -f Jewl.mk
-The Binary will appear under ./Release
-To install the binary to ~/bin run make -j4 -e -f Jewl.mk install
+run configure (In a Separate Directory (good habit to learn)) -p /path/to/install/jewl/binary
+run make
+run sudo make install 
 ===========Caution===========
 This Source Code was only tested with linux
 Some parts may not work with windows or macos

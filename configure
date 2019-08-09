@@ -1,0 +1,18 @@
+#!/bin/bash
+DIR=""
+SRCDIR=$(dirname $0)
+FILES="./Interpreter.o ./main.o"
+while getopts p: option
+do
+case "${option}"
+in
+p) DIR=${OPTARG};;
+esac
+done
+echo "Generating Makefile"
+touch Makefile
+echo -e "all:\n\t/usr/bin/g++ -c \"$SRCDIR/src/Interpreter.cc\" -O2 -Wall -DNDEBUG -o ./Interpreter.o -I. -I." > Makefile
+echo -e "\t/usr/bin/g++ -c \"$SRCDIR/src/main.cc\" -O2 -Wall -DNDEBUG -o ./main.o -I. -I." >> Makefile
+echo -e "\t/usr/bin/g++ -o ./Jewl $FILES -L." >> Makefile
+echo -e "install:\n\t/usr/bin/cp ./Jewl $DIR/bin/jewl" >> Makefile
+echo -e "clean:\n\t/usr/bin/rm -rf *" >> Makefile

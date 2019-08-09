@@ -22,6 +22,8 @@ Version 3.1
   -If Statements currently affect all code below them
 Version 3.1.1
   -Fixed if statement termination (see above)
-Version 4.0.0 (Current)
+Version 4.0.0
   -Update Syntax (Not backwards compatible)
   -Add console input
+Version 4.0.1 (Current)
+  -Change Build Process

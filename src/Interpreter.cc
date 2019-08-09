@@ -17,6 +17,7 @@ std::vector<int> getIndex(std::vector <std::string> input, std::string searched)
 
     return result;
 }
+
 int convertInt(int ch1) {
 	  if(ch1 == 48) {
 	    return 0;
