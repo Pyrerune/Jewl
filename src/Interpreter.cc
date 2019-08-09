@@ -50,19 +50,23 @@ int Interpreter::run(char token[], int size) {
 	bool lined = false;
 	bool print = false;
 	bool ifBool = false;
+	int jmpInt = 0;
+	
+	int IncNum;
 	bool ifCond = false;
 	std::vector <std::string> varFullName;
 	std::vector <std::string> varFullContent;
 	std::vector <int> varFullContentInt;
 	std::vector <std::string> varType;
 	std::string strVar = "";
-
+	std::vector <int> newLineI;
 	for (int i = 0; i <= size; i++) {
 		char tok = token[i];
 		//formatting
 		if(tok == '\n') {
 			tok = ' ';
 			lines++;
+			newLineI.push_back(i);
 		} else if(tok == '<') {
 			if(token[i+1] == 'E') {
 				if(token[i+2] == 'O') {
@@ -278,11 +282,42 @@ int Interpreter::run(char token[], int size) {
 			varFullContent.push_back(varContent);
 			varFullContentInt.push_back(0);
 			varType.push_back("String");
+		} else if(token[i] == 'j' && token[i+1] == 'm' && token[i+2] == 'p') {
+			print = false;
+			jmpInt++;
+			//std::cout << "test";
+			int jmpLine;
+			for(int x = 3; token[i+x] != ';'; x++) {
+				if(token[i+x] == '1' || token[i+x] == '2' || token[i+x] == '3' || token[i+x] == '4' || token[i+x] == '5' || token[i+x] == '6' || token[i+x] == '7' || token[i+x] == '8' || token[i+x] == '9' || token[i+x] == '0') {
+					if(token[i+x+1] == '1' || token[i+x+1] == '2' || token[i+x+1] == '3' || token[i+x+1] == '4' || token[i+x+1] == '5' || token[i+x+1] == '6' || token[i+x+1] == '7' || token[i+x+1] == '8' || token[i+x+1] == '9' || token[i+x+1] == '0') {
+						int num = token[i+x];
+						int num1 = token[i+x+1];
+						num = convertInt(num);
+						num1 = convertInt(num1);
+						num = num * 10;
+						num = num + num1;
+						jmpLine = num;
+					} else {
+						int num = token[i+x];
+						num = convertInt(num);
+						jmpLine = num;
+					}
+				}
+			}
+			
+			if(jmpInt > 1) {
+				continue;
+			} else {
+				i = newLineI[jmpLine-3]+1;
+			
+			}
 		}
+		
+		
 
 
 
-	//	print = false;
+		//print = false;
 		//format and print strings
 		if(token[i] == '"') {
 			std::string word;
@@ -309,9 +344,14 @@ int Interpreter::run(char token[], int size) {
 
 				} else {
 					if(lined == false) {
-							std::cout << word;
+						
+								std::cout << word;
+							
 						} else if(lined == true) {
-							std::cout << word << std::endl;
+							
+								std::cout << word << std::endl;
+							
+							
 						}
 				}
 			}
@@ -551,7 +591,7 @@ int Interpreter::run(char token[], int size) {
 			std::string varNameInt;
 			std::string varContent;
 			std::string varNamecmp;
-
+			
 			for(int x = 0; token[i+x] != '}'; x++) {
 				if(token[i+x] == '$' || token[i+x] == '{') {
 
@@ -568,18 +608,11 @@ int Interpreter::run(char token[], int size) {
 
 			index = getIndex(varFullName, varName);
 			
+			
 			if(index.size() < 1) {
 				continue;
 			}
-			if(index.size() > 1) {
-				int errLine = lines;
-				std::cout << "=========================" << std::endl;
-				std::cout << "==========ERROR==========" << std::endl;
-				std::cout << "=========================" << std::endl;
-				std::cout << "At Line: " << errLine << std::endl;
-
-				return 2;
-			} else {
+			
 				if(print == true) {
 					if(ifCond == true) {
 						if(ifBool == true) {
@@ -616,12 +649,13 @@ int Interpreter::run(char token[], int size) {
 					}
 				}
 
-			}
+			
 
-		}
+		} 
 		if(token[i+1] == ';') {
 			continue;
 		}
+		
 
 		}
 

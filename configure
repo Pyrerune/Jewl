@@ -14,5 +14,5 @@ touch Makefile
 echo -e "all:\n\t/usr/bin/g++ -c \"$SRCDIR/src/Interpreter.cc\" -O2 -Wall -DNDEBUG -o ./Interpreter.o -I. -I." > Makefile
 echo -e "\t/usr/bin/g++ -c \"$SRCDIR/src/main.cc\" -O2 -Wall -DNDEBUG -o ./main.o -I. -I." >> Makefile
 echo -e "\t/usr/bin/g++ -o ./Jewl $FILES -L." >> Makefile
-echo -e "install:\n\t/usr/bin/cp ./Jewl $DIR/bin/jewl" >> Makefile
+echo -e "install:\n\t/usr/bin/cp ./Jewl $DIR/jewl" >> Makefile
 echo -e "clean:\n\t/usr/bin/rm -rf *" >> Makefile

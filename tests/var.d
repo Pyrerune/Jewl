@@ -1,8 +1,7 @@
-Int Gold=32;
-println "What is yer name Traveler?";
-input name;
-print "Greetings, ";
-println ${name};
-print "You have ";
-print ${Gold};
-println " Gold";
+println 1;
+println 2;
+println 3;
+println 4;
+println 5;
+println 6;
+jmp 3;
