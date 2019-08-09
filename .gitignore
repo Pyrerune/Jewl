@@ -5,3 +5,5 @@ compile_flags.txt
 Jewl.project
 Release/
 Jewl.txt
+Jewl.mk
+Build.mk

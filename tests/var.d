@@ -1,4 +1,8 @@
-if(1+1==3) {
-  println "HI!";
-}
-println "World";
+Int Gold=32;
+println "What is yer name Traveler?";
+input name;
+print "Greetings, ";
+println ${name};
+print "You have ";
+print ${Gold};
+println " Gold";
