@@ -2,11 +2,23 @@
 run configure (In a Separate Directory (good habit to learn)) -p /path/to/install/jewl/binary
 run make
 run sudo make install 
+
 ===========Caution===========
 This Source Code was only tested with linux
 Some parts may not work with windows or macos
 Some parts of this code may be unstable as I haven't been able to test all of it
 
+===Note for Arch Linux users===
+You can also add my repository which will let you install jewl as a package
+Please note that titanium will also contain other projects I work on
+If you don't want this then building the source is the better option
+otherwise add the following to /etc/pacman.conf
+
+[titanium]
+Server = https://pyrerune.github.io/titanium/$arch
+
+
 ==========Contribution========
 Any Contribution is welcomed.
+I would love someone to work on the wiki.
 I am still hesitant on allowing code Contribution
