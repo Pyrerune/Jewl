@@ -287,29 +287,59 @@ int Interpreter::run(char token[], int size) {
 			jmpInt++;
 			//std::cout << "test";
 			int jmpLine;
+			int jmpInc;
 			for(int x = 3; token[i+x] != ';'; x++) {
-				if(token[i+x] == '1' || token[i+x] == '2' || token[i+x] == '3' || token[i+x] == '4' || token[i+x] == '5' || token[i+x] == '6' || token[i+x] == '7' || token[i+x] == '8' || token[i+x] == '9' || token[i+x] == '0') {
-					if(token[i+x+1] == '1' || token[i+x+1] == '2' || token[i+x+1] == '3' || token[i+x+1] == '4' || token[i+x+1] == '5' || token[i+x+1] == '6' || token[i+x+1] == '7' || token[i+x+1] == '8' || token[i+x+1] == '9' || token[i+x+1] == '0') {
-						int num = token[i+x];
-						int num1 = token[i+x+1];
+				if(token[i+x] == ',') {
+					if(token[i+x+2] == '1' || token[i+x+2] == '2' || token[i+x+2] == '3' || token[i+x+2] == '4' || token[i+x+2] == '5' || token[i+x+2] == '6' || token[i+x+2] == '7' || token[i+x+2] == '8' || token[i+x+2] == '9' || token[i+x+2] == '0') {
+					if(token[i+x+3] == '1' || token[i+x+3] == '2' || token[i+x+3] == '3' || token[i+x+3] == '4' || token[i+x+3] == '5' || token[i+x+3] == '6' || token[i+x+3] == '7' || token[i+x+3] == '8' || token[i+x+3] == '9' || token[i+x+3] == '0') {
+						int num = token[i+x+2];
+						int num1 = token[i+x+3];
 						num = convertInt(num);
 						num1 = convertInt(num1);
 						num = num * 10;
 						num = num + num1;
-						jmpLine = num;
+						jmpInc = num;
+						i++;
+						i++;
 					} else {
-						int num = token[i+x];
+						int num = token[i+x+2];
 						num = convertInt(num);
-						jmpLine = num;
+						jmpInc = num;
+						i++;
 					}
 				}
+				} else  if(token[i+x] == '1' || token[i+x] == '2' || token[i+x] == '3' || token[i+x] == '4' || token[i+x] == '5' || token[i+x] == '6' || token[i+x] == '7' || token[i+x] == '8' || token[i+x] == '9' || token[i+x] == '0') {
+							if(token[i+x-2] == ',') {
+								
+							} else {
+								if(token[i+x+1] == '1' || token[i+x+1] == '2' || token[i+x+1] == '3' || token[i+x+1] == '4' || token[i+x+1] == '5' || token[i+x+1] == '6' || token[i+x+1] == '7' || token[i+x+1] == '8' || token[i+x+1] == '9' || token[i+x+1] == '0') {
+									int num = token[i+x];
+									int num1 = token[i+x+1];
+									num = convertInt(num);
+									num1 = convertInt(num1);
+									num = num * 10;
+									num = num + num1;
+									jmpLine = num;
+								} else {
+									int num = token[i+x];
+									num = convertInt(num);
+									jmpLine = num;
+								}
+							
+							}
+				}
+				
 			}
-			
-			if(jmpInt > 1) {
+			jmpInc = jmpInc + 1;
+			if(jmpInt >= jmpInc) {
 				continue;
 			} else {
 				i = newLineI[jmpLine-3]+1;
 			
+			}
+		} else if(token[i] == '/' && token[i+1] == '/') {
+			for(int x = 2; token[i+x] != ';'; x++) {
+				token[i+x] = ' ';
 			}
 		}
 		

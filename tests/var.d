@@ -4,4 +4,4 @@ println 3;
 println 4;
 println 5;
 println 6;
-jmp 3;
+println "fuck off";

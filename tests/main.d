@@ -130,4 +130,4 @@ println ${ib};
 println ${x};
 println ${z};
 println ${y};
-jmp 9;
+jmp 9, 5;

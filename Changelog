@@ -29,3 +29,7 @@ Version 4.0.1
   -Change Build Process
 Version 4.1.1 (Current)
   -Add jmp (jump to specified line)
+Version 4.2.0 (Current)
+  -Add Comments
+  -Allows Incrementing 
+  
