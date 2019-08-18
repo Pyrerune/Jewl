@@ -1,0 +1,10 @@
+print "RIP";
+print "FUCK";
+print 11+11;
+print 11+1;
+print 11;
+print 1+11;
+print 1+1;
+print 1;
+var test = "HELL";
+print "${test}";
