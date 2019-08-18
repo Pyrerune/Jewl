@@ -27,9 +27,12 @@ Version 4.0.0
   -Add console input
 Version 4.0.1 
   -Change Build Process
-Version 4.1.1 (Current)
+Version 4.1.1
   -Add jmp (jump to specified line)
-Version 4.2.0 (Current)
+Version 4.2.0
   -Add Comments
   -Allows Incrementing 
-  
+Version 5.0.0 (Current)
+  -Complete Rewrite of Jewl in Java
+  -File Extension is now .jwl
+

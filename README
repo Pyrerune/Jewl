@@ -1,14 +1,16 @@
 =========Installation========
-run configure (In a Separate Directory (good habit to learn)) -p /path/to/install/jewl/binary
-run make
-run sudo make install 
+git clone https://github.com/Pyrerune/Jewl.git
+run configure (In a Separate Directory (good habit to learn)) -p /path/before/bin/directory (if it is going in /usr/bin, the path to use is /usr)
+run sudo make
 
 ===========Caution===========
-This Source Code was only tested with linux
-Some parts may not work with windows or macos
-Some parts of this code may be unstable as I haven't been able to test all of it
+The Entire Interpreter was Rewritten in Java Recently
+It (for obvious reasons) is NOT Backwards Compatible (See wiki and changelog)
+I will continue to Maintain the older version but not as often
+if you would like to use the older version use git clone -b Legacy https://github.com/Pyrerune/Jewl.git
 
 ===Note for Arch Linux users===
+I am working on updating the package repository with the new and old versions
 You can also add my repository which will let you install jewl as a package
 Please note that titanium will also contain other projects I work on
 If you don't want this then building the source is the better option
@@ -20,5 +22,7 @@ Server = https://pyrerune.github.io/titanium/$arch
 
 ==========Contribution========
 Any Contribution is welcomed.
-I would love someone to work on the wiki.
-I am still hesitant on allowing code Contribution
+
+
+===========Contact============
+You can contact me at pyrerune@gmail.com
