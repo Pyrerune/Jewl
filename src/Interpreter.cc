@@ -1,12 +1,12 @@
 #include "Interpreter.h"
 #include <iostream>
 #include <bits/stdc++.h>
-
 char replaceChar(char ch1, char ch2) {
 	  ch1 = ch2;
 	  return ch1;
 }
-std::vector<int> getIndex(std::vector <std::string> input, std::string searched) {
+
+std::vector<int> getIndex(std::vector<std::string> input, std::string searched) {
     std::vector<int> result;
 
     for (int i = 0; i < input.size(); i++) {
