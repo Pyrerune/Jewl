@@ -1,8 +1,13 @@
 package io.github.pyrerune;
 import io.github.pyrerune.errors.Error;
 
+import java.io.BufferedReader;
+import java.io.Console;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class Interpreter {
     public Error format(String[] tok) {
@@ -127,7 +132,14 @@ public class Interpreter {
 
                     variables.add(tok[i+1]);
                     variables.add(varContent);
-
+                    break;
+                case "input":
+                    String input;
+                    tok[i+1] = tok[i+1].substring(0, tok[i+1].length() -1);
+                    Scanner in = new Scanner(System.in);
+                    input = in.nextLine();
+                    variables.add(tok[i+1]);
+                    variables.add(input);
 
 
                 case ";":

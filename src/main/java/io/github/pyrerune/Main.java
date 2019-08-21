@@ -20,8 +20,9 @@ public class Main {
                 }
                 tok = contents.split(" ");
                 interpreter.format(tok);
+                file.close();
             } catch (FileNotFoundException e) {
-                System.out.println("Jewl Intepreter\nVersion: 5.0.1-2");
+                System.out.println("Jewl Intepreter\nVersion: 5.0.2-1");
             }
 
 

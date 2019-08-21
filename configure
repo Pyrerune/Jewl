@@ -1,6 +1,6 @@
 #!/bin/bash
 DIR=""
-VERSION="5.0.1-3"
+VERSION="5.0.2-1"
 SRCDIR=$(dirname $0)
 FILES="./Interpreter.o ./main.o"
 while getopts p: option

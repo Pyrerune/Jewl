@@ -32,7 +32,8 @@ Version 4.1.1
 Version 4.2.0
   -Add Comments
   -Allows Incrementing 
-Version 5.0.0 (Current)
+Version 5.0.0
   -Complete Rewrite of Jewl in Java
   -File Extension is now .jwl
-
+Version 5.0.2 (Current)
+  -Added input
